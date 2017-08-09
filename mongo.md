@@ -1,4 +1,59 @@
-[SQL to MongoDB Mapping Chart](http://docs.mongodb.org/manual/reference/sql-comparison/#sql-to-mongodb-mapping-chart)
+
+<div class="section" id="base">
+    <h2>Base<a class="headerlink" href="#base" title="Permalink to this headline">¶</a></h2>
+    <table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="30%">
+<col width="70%">
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Help Methods and Commands</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">help</span></code></td>
+<td>Show help.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../method/db.help/#db.help" title="db.help()"><code class="xref mongodb mongodb-method docutils literal"><span class="pre">db.help()</span></code></a></td>
+<td>Show help for database methods.</td>
+</tr>
+<tr class="row-even"><td><code class="xref mongodb mongodb-method docutils literal"><span class="pre">db.&lt;collection&gt;.help()</span></code></td>
+<td>Show help on collection methods. The <code class="docutils literal"><span class="pre">&lt;collection&gt;</span></code> can be the
+name of an existing collection or a non-existing collection.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">show</span> <span class="pre">dbs</span></code></td>
+<td>Print a list of all databases on the server.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">use</span> <span class="pre">&lt;db&gt;</span></code></td>
+<td>Switch current database to <code class="docutils literal"><span class="pre">&lt;db&gt;</span></code>. The <a class="reference internal" href="../program/mongo/#bin.mongo" title="mongo"><code class="xref mongodb mongodb-program docutils literal"><span class="pre">mongo</span></code></a> shell
+variable <code class="docutils literal"><span class="pre">db</span></code> is set to the current database.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">show</span> <span class="pre">collections</span></code></td>
+<td>Print a list of all collections for current database</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">show</span> <span class="pre">users</span></code></td>
+<td>Print a list of users for current database.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">show</span> <span class="pre">roles</span></code></td>
+<td>Print a list of all roles, both user-defined and built-in, for
+the current database.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">show</span> <span class="pre">profile</span></code></td>
+<td>Print the five most recent operations that took 1 millisecond or
+more. See documentation on the <a class="reference internal" href="../../tutorial/manage-the-database-profiler/"><span class="doc">database profiler</span></a> for more information.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">show</span> <span class="pre">databases</span></code></td>
+<td>Print a list of all available databases.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">load()</span></code></td>
+<td>Execute a JavaScript file. See
+<a class="reference internal" href="../../tutorial/write-scripts-for-the-mongo-shell/"><span class="doc">Write Scripts for the mongo Shell</span></a>
+for more information.</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="sql-to-mongodb-mapping-chart">
 <h1>SQL to MongoDB Mapping Chart<a class="headerlink" href="#sql-to-mongodb-mapping-chart" title="Permalink to this headline">¶</a></h1>
 <p>In addition to the charts that follow, you might want to consider the
