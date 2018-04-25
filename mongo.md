@@ -130,7 +130,7 @@ key.</p>
 </tr>
 <tr class="row-odd"><td>aggregation (e.g. group by)</td>
 <td><p class="first">aggregation framework</p>
-<p class="last">See the <a class="reference internal" href="../sql-aggregation-comparison/"><em>SQL to Aggregation Framework Mapping Chart</em></a>.</p>
+<p class="last">See the <a class="reference internal" href="https://docs.mongodb.com/manual/reference/sql-aggregation-comparison/"><em>SQL to Aggregation Framework Mapping Chart</em></a>.</p>
 </td>
 </tr>
 </tbody>
