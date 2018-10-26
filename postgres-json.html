@@ -1,0 +1,209 @@
+<!DOCTYPE html> <html class="WithJs gr__devhints_io LoadDone" lang=en><!--
+ Archive processed by SingleFile 
+ url: https://devhints.io/postgresql-json 
+ saved date: Fri Oct 26 2018 11:59:34 GMT+0300 (Восточная Европа, летнее время) 
+--><meta charset=utf-8>
+<meta content="width=device-width, initial-scale=1.0" name=viewport>
+<meta content=/postgresql-json.html name=app:pageurl>
+<title>PostgreSQL JSON cheatsheet</title>
+<meta content="PostgreSQL JSON cheatsheet" property=og:title>
+<meta content="PostgreSQL JSON cheatsheet" property=twitter:title>
+<meta content=article property=og:type>
+<meta content="https://assets.devhints.io/previews/postgresql-json.jpg?t=20180915070711" property=og:image>
+<meta content="https://assets.devhints.io/previews/postgresql-json.jpg?t=20180915070711" property=twitter:image>
+<meta content=900 property=og:image:width>
+<meta content=471 property=og:image:height>
+<meta content="The one-page guide to PostgreSQL JSON: usage, examples, links, snippets, and more." name=description>
+<meta content="The one-page guide to PostgreSQL JSON: usage, examples, links, snippets, and more." property=og:description>
+<meta content="The one-page guide to PostgreSQL JSON: usage, examples, links, snippets, and more." property=twitter:description>
+<link rel=canonical href=https://devhints.io/postgresql-json>
+<meta name=og:url content=https://devhints.io/postgresql-json>
+<meta content="Devhints.io cheatsheets" property=og:site_name>
+<meta content=Others property=article:section>
+<meta property=page:depth content=1>
+<!--[if lt IE 9]><script src='https://cdnjs.cloudflare.com/ajax/libs/nwmatcher/1.2.5/nwmatcher.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/json2/20140204/json2.js'></script><script src='https://cdn.rawgit.com/gisu/selectivizr/1.0.3/selectivizr.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js'></script><![endif]-->
+<style id=critical-css>*,::after,::before{background-repeat:no-repeat;box-sizing:inherit}::after,::before{text-decoration:inherit;vertical-align:inherit}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}@media(max-width:768px) and (min-width:480px){body{font-size:calc(13px + (1 * ((100vw - 480px) / 288)))}}@media(max-width:1280px) and (min-width:768px){body{font-size:calc(14px + (0 * ((100vw - 768px) / 512)))}}@media(min-width:1280px){body{font-size:14px}}a:visited{color:#15234d}@media(max-width:768px){.MarkdownBody h2{margin-bottom:8px;margin-top:32px}}@media(max-width:480px){.MarkdownBody h2{margin-bottom:8px;margin-top:32px}}@media(max-width:768px) and (min-width:480px){.MarkdownBody h2{font-size:calc(30px + (4 * ((100vw - 480px) / 288)))}}@media(max-width:1280px) and (min-width:768px){.MarkdownBody h2{font-size:calc(34px + (2 * ((100vw - 768px) / 512)))}}@media(min-width:1280px){.MarkdownBody h2{font-size:36px}}@media(max-width:768px) and (min-width:480px){.MarkdownBody h3{font-size:calc(17px + (2 * ((100vw - 480px) / 288)))}}@media(max-width:1280px) and (min-width:768px){.MarkdownBody h3{font-size:calc(19px + (0 * ((100vw - 768px) / 512)))}}@media(min-width:1280px){.MarkdownBody h3{font-size:19px}}.MarkdownBody a,.MarkdownBody a:visited{color:#26648e;text-decoration:none}@media(max-width:480px){.body-area{padding:16px}}@media(max-width:768px){.h3-section>.body{overflow-x:auto}}@media(max-width:480px){.h3-section>.body{margin:0 -16px;box-shadow:rgba(102,119,136,0.55) 0 1px 1px}}@media(min-width:481px){.h3-section>.body{border-radius:2px}.h3-section>.body>:first-child{border-top-left-radius:3px;border-top-right-radius:3px}.h3-section>.body>:last-child{border-bottom-left-radius:3px;border-bottom-right-radius:3px}}@media(max-width:768px){.h3-section>h3{margin-top:0}}.h3-section>h3::after{margin-left:24px;content:"";display:inline-block;vertical-align:middle;width:100%;height:1px;background:linear-gradient(to right,rgba(116,95,181,0.2),transparent 80%)}.h3-section>.body>ul>li::before{content:"";position:absolute;display:inline-block;width:4px;height:4px;background:#678;border-radius:50%;left:16px;top:18px}@media(max-width:768px) and (min-width:480px){.h3-section>.body>h4{font-size:calc(11px + (1 * ((100vw - 480px) / 288)))}}@media(max-width:1280px) and (min-width:768px){.h3-section>.body>h4{font-size:calc(12px + (0 * ((100vw - 768px) / 512)))}}@media(min-width:1280px){.h3-section>.body>h4{font-size:12px}}.h3-section>.body>iframe ~ p a,.h3-section>.body>iframe ~ p a:visited,.h3-section>.body>pre ~ p a,.h3-section>.body>pre ~ p a:visited,.h3-section>.body>table ~ p a,.h3-section>.body>table ~ p a:visited,.h3-section>.body>ul ~ p a,.h3-section>.body>ul ~ p a:visited{color:#345;text-decoration:none;border-bottom:1px solid rgba(102,119,136,0.05)}.h3-section>.body>iframe ~ p a:hover,.h3-section>.body>pre ~ p a:hover,.h3-section>.body>table ~ p a:hover,.h3-section>.body>ul ~ p a:hover{color:#26648e}@media(max-width:1264px){.h3-section-list{margin-left:-8px}}@media(max-width:1264px){.h3-section-list{margin-right:-8px}}.h3-section-list::after{content:"";display:table;clear:both;zoom:1}@media(max-width:1264px){.h3-section-list>.h3-section{padding:8px}}@media(min-width:769px){.h3-section-list>.h3-section{padding-top:0}}@media(min-width:769px){.h3-section-list>.h3-section{width:50%}}@media(max-width:768px){.main-heading{margin-bottom:8px;margin-top:32px}}@media(max-width:480px){.main-heading{margin-bottom:8px;margin-top:32px}}@media(max-width:768px) and (min-width:480px){.main-heading>h1{font-size:calc(40px + (6 * ((100vw - 480px) / 288)))}}@media(max-width:1280px) and (min-width:768px){.main-heading>h1{font-size:calc(46px + (3 * ((100vw - 768px) / 512)))}}@media(min-width:1280px){.main-heading>h1{font-size:49px}}</style>
+<body data-gr-c-s-loaded=true><noscript>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Cousine'>
+<link rel='stylesheet' href='./assets/2017/style.css?t=20180915070711'>
+</noscript>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"NewsArticle","mainEntityOfPage":{"@type":"WebPage","@id":"https://google.com/article"},"headline":"PostgreSQL JSON cheatsheet","image":["https://assets.devhints.io/previews/postgresql-json.jpg?t=20180915070711"],"description":"The one-page guide to PostgreSQL JSON: usage, examples, links, snippets, and more."}</script>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://devhints.io/#others","name":"Others"}},{"@type":"ListItem","position":2,"item":{"@id":"https://devhints.io/postgresql-json","name":"PostgreSQL JSON"}}]}</script>
+<style media>@font-face{font-family:Cousine;font-style:normal;font-weight:400;src:url("data:font/woff2;base64,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") format("woff2");unicode-range:U+0-FF,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}</style><style media>*,::before,::after{background-repeat:no-repeat;box-sizing:inherit}::before,::after{text-decoration:inherit;vertical-align:inherit}html{box-sizing:border-box;cursor:default;text-size-adjust:100%}aside,header{display:block}main{display:block}a{background-color:transparent}::selection{background-color:#b3d4fc;color:#000;text-shadow:none}table{border-collapse:collapse}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}a{touch-action:manipulation}[hidden]{display:none}html,body{background:#f1f3f5;font-family:-apple-system,BlinkMacSystemFont,"segoe ui",roboto,oxygen,ubuntu,cantarell,"fira sans","droid sans","helvetica neue",sans-serif;font-size:14px;line-height:1.6;color:#345;overflow-x:hidden}body{font-size:13px;padding:0;margin:0}@media(max-width:768px) and (min-width:480px){body{font-size:calc(13px + (1 * ((100vw - 480px) / 288)))}}@media(max-width:1280px) and (min-width:768px){body{font-size:calc(14px + (0 * ((100vw - 768px) / 512)))}}@media(min-width:1280px){body{font-size:14px}}pre,code{letter-spacing:-0.03em}:not(pre):not(code){-webkit-font-smoothing:antialiased}a:visited{color:#15234d}a:hover{color:#3ac1cb}html.WithJs.LoadDone .post-content.-wrapified{opacity:1;transition:opacity 100ms linear 100ms}.MarkdownBody code{color:#678;font-size:.96em}.MarkdownBody pre,.MarkdownBody code{font-family:cousine,sfmono-regular,Consolas,Menlo,"liberation mono","ubuntu mono",Courier,monospace}.MarkdownBody pre{box-shadow:none;border-left:0;overflow:auto hidden;background:#fff;font-size:.96em;line-height:1.5}.MarkdownBody pre>code{color:#111;padding:0;background:0;overflow:visible;font-size:1em}.MarkdownBody pre.-setup{background:#f8f9fa}.token.keyword{color:#26648e}.token.string{color:#14af83}.token.comment,.token.punctuation,.token.operator{color:#aaa}.MarkdownBody h2{margin:0 0 24px;padding:0;position:relative;font-size:30px;line-height:1.2;font-weight:200;font-family:-apple-system,BlinkMacSystemFont,"segoe ui",roboto,oxygen,ubuntu,cantarell,"fira sans","droid sans","helvetica neue",sans-serif}@media(max-width:768px){.MarkdownBody h2{margin-bottom:8px;margin-top:32px}}@media(max-width:480px){.MarkdownBody h2{margin-bottom:8px;margin-top:32px}}@media(max-width:768px) and (min-width:480px){.MarkdownBody h2{font-size:calc(30px + (4 * ((100vw - 480px) / 288)))}}@media(max-width:1280px) and (min-width:768px){.MarkdownBody h2{font-size:calc(34px + (2 * ((100vw - 768px) / 512)))}}@media(min-width:1280px){.MarkdownBody h2{font-size:36px}}.MarkdownBody h3{margin:0 0 16px;padding:0;font-family:-apple-system,BlinkMacSystemFont,"segoe ui",roboto,oxygen,ubuntu,cantarell,"fira sans","droid sans","helvetica neue",sans-serif;font-size:17px;font-weight:400;color:#745fb5}@media(max-width:768px) and (min-width:480px){.MarkdownBody h3{font-size:calc(17px + (2 * ((100vw - 480px) / 288)))}}@media(max-width:1280px) and (min-width:768px){.MarkdownBody h3{font-size:calc(19px + (0 * ((100vw - 768px) / 512)))}}@media(min-width:1280px){.MarkdownBody h3{font-size:19px}}.MarkdownBody a,.MarkdownBody a:visited{color:#26648e;text-decoration:none}.MarkdownBody a:hover{text-decoration:underline}.local-anchor{margin-left:-0.9em;margin-right:.1em;padding:0 .1em}.MarkdownBody .local-anchor,.MarkdownBody .local-anchor:visited{color:#678;text-decoration:inherit;opacity:.5}.MarkdownBody .local-anchor:hover,.MarkdownBody .local-anchor:focus{color:#fff;background:#745fb5;opacity:1;text-decoration:inherit}.MarkdownBody table{width:100%}.MarkdownBody table tr+tr{border-top:1px solid rgba(102,119,136,0.05)}.MarkdownBody table tbody+tbody{border-top:1px solid rgba(102,119,136,0.2)}.MarkdownBody table td,.MarkdownBody table th{padding:8px 16px;vertical-align:top;text-align:left}.MarkdownBody table tr th:last-child,.MarkdownBody table tr td:last-child{text-align:right}.MarkdownBody table td:first-child{white-space:nowrap}.MarkdownBody table td>code{font-size:.96em}.MarkdownBody table td:first-child>code ~ em{font-size:11px;font-style:normal;color:#678}@media(max-width:768px) and (min-width:480px){.MarkdownBody table td:first-child>code ~ em{font-size:calc(11px + (1 * ((100vw - 480px) / 288)))}}@media(max-width:1280px) and (min-width:768px){.MarkdownBody table td:first-child>code ~ em{font-size:calc(12px + (0 * ((100vw - 768px) / 512)))}}@media(min-width:1280px){.MarkdownBody table td:first-child>code ~ em{font-size:12px}}.MarkdownBody table thead th{font-weight:400;color:#745fb5}.MarkdownBody table.-shortcuts td:first-child>code{font-size:1rem;padding:5px 6px 5px 8px;background:#f8f9fa;border-radius:3px;margin-right:2px;letter-spacing:.1em;color:#345}.MarkdownBody table.-left-align tr th,.MarkdownBody table.-left-align tr td,.MarkdownBody table.-left-align tr td:last-child{text-align:left}.MarkdownBody table.-headers thead{display:table-header-group;border-bottom:1px solid rgba(102,119,136,0.2)}@keyframes announcements-item-flyin{0%{transform:translate3d(0,32px,0);opacity:0}100%{transform:translate3d(0,0,0);opacity:1}}.body-area{max-width:1232px;margin:0 auto;padding:16px}@media(max-width:480px){.body-area{padding:16px}}.codefund-sponsor{min-height:114px}.h2-section:first-child:not(.-no-hide)>h2{display:none}@media(min-width:481px){.h2-section+.h2-section{margin-top:48px}}.h3-section>.body>pre{margin:0;padding:16px}@media(max-width:768px){.h3-section>.body{overflow-x:auto}}.h3-section>.body{background:#fff;box-shadow:rgba(102,119,136,0.03) 0 6px 8px,rgba(102,119,136,0.3) 0 1px 2px}@media(max-width:480px){.h3-section>.body{margin:0 -16px;box-shadow:rgba(102,119,136,0.55) 0 1px 1px}}@media(min-width:481px){.h3-section>.body{border-radius:2px}.h3-section>.body>:first-child{border-top-left-radius:3px;border-top-right-radius:3px}.h3-section>.body>:last-child{border-bottom-left-radius:3px;border-bottom-right-radius:3px}}.h3-section>h3{margin-top:8px;margin-bottom:16px;white-space:nowrap;overflow:hidden}@media(max-width:768px){.h3-section>h3{margin-top:0}}.h3-section>h3::after{margin-left:24px;content:"";display:inline-block;vertical-align:middle;width:100%;height:1px;background:linear-gradient(to right,rgba(116,95,181,0.2),transparent 80%)}.h3-section>.body>ul{margin:0;padding:0;list-style-type:none}.h3-section>.body>ul>li{padding:8px 8px 8px 36px;position:relative}.h3-section>.body>ul>li::before{content:"";position:absolute;display:inline-block;width:4px;height:4px;background:#678;border-radius:50%;left:16px;top:18px}.h3-section>.body>ul>li+li{border-top:1px solid rgba(102,119,136,0.05)}.h3-section>.body>p{padding:16px;margin:0}.h3-section>.body>h4{font-size:11px;margin:0;padding:4px 16px;font-weight:400;background:#f8f9fa;color:#678}@media(max-width:768px) and (min-width:480px){.h3-section>.body>h4{font-size:calc(11px + (1 * ((100vw - 480px) / 288)))}}@media(max-width:1280px) and (min-width:768px){.h3-section>.body>h4{font-size:calc(12px + (0 * ((100vw - 768px) / 512)))}}@media(min-width:1280px){.h3-section>.body>h4{font-size:12px}}.h3-section>.body>pre ~ p{background:#f8f9fa;color:#678}.h3-section>.body>pre ~ p a,.h3-section>.body>pre ~ p a:visited,.h3-section>.body>ul ~ p a,.h3-section>.body>ul ~ p a:visited,.h3-section>.body>iframe ~ p a,.h3-section>.body>iframe ~ p a:visited,.h3-section>.body>table ~ p a,.h3-section>.body>table ~ p a:visited{color:#345;text-decoration:none;border-bottom:1px solid rgba(102,119,136,0.05)}.h3-section>.body>pre ~ p a:hover,.h3-section>.body>ul ~ p a:hover,.h3-section>.body>iframe ~ p a:hover,.h3-section>.body>table ~ p a:hover{color:#26648e}.h3-section>.body>:not(:first-child){border-top:1px solid rgba(102,119,136,0.05)}.h3-section>.body>p+p:not(:first-child){margin-top:-1.5em;border-top:0}.h3-section-list{margin:0 -16px}@media(max-width:1264px){.h3-section-list{margin-left:-8px}}@media(max-width:1264px){.h3-section-list{margin-right:-8px}}.h3-section-list::after{content:"";display:table;clear:both;zoom:1}.h3-section-list>.h3-section{padding:16px;float:left;width:100%}@media(max-width:1264px){.h3-section-list>.h3-section{padding:8px}}@media(min-width:769px){.h3-section-list>.h3-section{padding-top:0}}@media(min-width:769px){.h3-section-list>.h3-section{width:50%}}.main-heading{margin:64px 0 24px;padding:0;position:relative}@media(max-width:768px){.main-heading{margin-bottom:8px;margin-top:32px}}@media(max-width:480px){.main-heading{margin-bottom:8px;margin-top:32px}}.main-heading{margin-top:0;margin-bottom:0}.main-heading>h1{font-size:40px;line-height:1.2;font-weight:200;font-family:-apple-system,BlinkMacSystemFont,"segoe ui",roboto,oxygen,ubuntu,cantarell,"fira sans","droid sans","helvetica neue",sans-serif;margin:0}@media(max-width:768px) and (min-width:480px){.main-heading>h1{font-size:calc(40px + (6 * ((100vw - 480px) / 288)))}}@media(max-width:1280px) and (min-width:768px){.main-heading>h1{font-size:calc(46px + (3 * ((100vw - 768px) / 512)))}}@media(min-width:1280px){.main-heading>h1{font-size:49px}}.main-heading>h1>em{font-style:normal;color:#9eaab6}.main-heading.-center>h1{text-align:center}.main-heading.-center>.adbox{margin-top:16px;text-align:center}.main-heading.-center>.adbox>.ad{display:inline-block}</style>
+<div class=body-area>
+<header class="main-heading -center" role=banner>
+<h1 class=h1>PostgreSQL JSON <em>cheatsheet</em></h1>
+<div class=adbox data-js-no-preview>
+<div class="ad -codefund" role=complementary>
+<aside class=codefund-sponsor data-js-no-preview>
+<div id=codefund_ad></div>
+</aside>
+</div>
+</div>
+</header>
+<main class="post-content MarkdownBody -wrapified" data-js-main-body data-js-anchors role=main>
+<div class=h2-section><h2 id=operators><a href=#operators class="local-anchor anchor">#</a>Operators</h2><div class="body h3-section-list" data-js-h3-section-list style=position:relative;height:477px>
+<div class=h3-section style=position:absolute;left:0;top:0><h3 id=accessors>Accessors</h3><div class=body>
+<pre class="-setup language-sql"><code class=language-sql><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> users <span class="token keyword">WHERE</span> <span class="token keyword">data</span><span class="token operator">-</span><span class="token operator">>></span><span class="token string">'name'</span> <span class="token operator">=</span> <span class="token string">'John'</span><span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">data</span><span class="token operator">-</span><span class="token operator">>></span><span class="token string">'name'</span> <span class="token keyword">AS</span> name <span class="token keyword">FROM</span> users<span class="token punctuation">;</span>
+</code></pre>
+<table class="-headers -shortcuts">
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-></code> <em>int</em></td>
+<td>Get array element <code>2</code></td>
+<td><code>data->2</code></td>
+<td>JSON</td>
+</tr>
+<tr>
+<td><code>-></code> <em>text</em></td>
+<td>Get object key <code>name</code></td>
+<td><code>data->'name'</code></td>
+<td>JSON</td>
+</tr>
+<tr>
+<td><code>#></code> <em>text[]</em></td>
+<td>Get keypath <code>a,b</code> (eg, <code>data.a.b</code>)</td>
+<td><code>data#>'{a,b}'</code></td>
+<td>JSON</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td><code>->></code> <em>int</em></td>
+<td>Get array element <code>2</code></td>
+<td><code>data->>2</code></td>
+<td>Text</td>
+</tr>
+<tr>
+<td><code>->></code> <em>text</em></td>
+<td>Get object key <code>name</code></td>
+<td><code>data->>'name'</code></td>
+<td>Text</td>
+</tr>
+<tr>
+<td><code>#>></code> <em>text[]</em></td>
+<td>Get keypath <code>a,b</code> (eg, <code>data.a.b</code>)</td>
+<td><code>data#>>'{a,b}'</code></td>
+<td>Text</td>
+</tr>
+</tbody>
+</table>
+<p><code>></code> returns JSON, <code>>></code> returns text.</p>
+</div></div><div class=h3-section style=position:absolute;left:616px;top:0><h3 id=boolean-operators>Boolean operators</h3><div class=body>
+<pre class="-setup language-sql"><code class=language-sql><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> users <span class="token keyword">WHERE</span> <span class="token keyword">data</span><span class="token operator">-</span><span class="token operator">></span>tags ? <span class="token string">'admin'</span><span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">data</span><span class="token operator">-</span><span class="token operator">></span>tags ? <span class="token string">'admin'</span> <span class="token keyword">AS</span> is_admin <span class="token keyword">FROM</span> users<span class="token punctuation">;</span>
+</code></pre>
+<table class="-headers -shortcuts -left-align">
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>?</code> <em>str</em></td>
+<td>Does <code>data</code> have key <code>name</code>?</td>
+<td><code>data ? 'name'</code></td>
+</tr>
+<tr>
+<td><code>?|</code> <em>text[]</em></td>
+<td>Does <code>data</code> have <code>a</code> or <code>b</code>?</td>
+<td><code>data ?| array['a','b']</code></td>
+</tr>
+<tr>
+<td><code>?&amp;</code> <em>text[]</em></td>
+<td>Does <code>data</code> have <code>a</code> and <code>b</code>?</td>
+<td><code>data ?&amp; array['a','b']</code></td>
+</tr>
+<tr>
+<td><code>@></code> <em>jsonb</em></td>
+<td>Does <code>left</code> include <code>right</code>?</td>
+<td><code>data @> '{"b":2}'::jsonb</code></td>
+</tr>
+<tr>
+<td><code>&lt;@</code> <em>jsonb</em></td>
+<td>Does <code>right</code> include <code>left</code>?</td>
+<td><code>data &lt;@ '{"a":1,"b":2}'::jsonb</code></td>
+</tr>
+</tbody>
+</table>
+<p>When <code>?</code>/<code>?|</code>/<code>?&amp;</code> works on objects, it checks keys; when it works on arrays, it checks for elements.</p>
+</div></div></div></div><div class=h2-section><h2 id=updating><a href=#updating class="local-anchor anchor">#</a>Updating</h2><div class="body h3-section-list" data-js-h3-section-list style=position:relative;height:376px>
+<div class=h3-section style=position:absolute;left:0;top:0><h3 id=arrays-and-objects>Arrays and objects</h3><div class=body>
+<pre class="-setup language-sql"><code class=language-sql><span class="token keyword">UPDATE</span> users <span class="token keyword">SET</span> tags <span class="token operator">=</span> tags <span class="token operator">||</span> array<span class="token punctuation">[</span><span class="token string">'admin'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<table class="-headers -shortcuts">
+<thead>
+<tr>
+<th>Operator</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>||</code> <em>json</em></td>
+<td><code>data || array['a','b']</code></td>
+<td>Concatenate</td>
+</tr>
+<tr>
+<td><code>-</code> <em>str</em></td>
+<td><code>data - 'a'</code></td>
+<td>Delete a key</td>
+</tr>
+<tr>
+<td><code>-</code> <em>int</em></td>
+<td><code>data - 1</code></td>
+<td>Delete an array item</td>
+</tr>
+<tr>
+<td><code>#-</code> <em>text[]</em></td>
+<td><code>data #- '{us,name}'</code></td>
+<td>Delete a path</td>
+</tr>
+</tbody>
+</table>
+<p>Only available in PostgreSQL 9.5+.</p>
+</div></div><div class=h3-section style=position:absolute;left:616px;top:0><h3 id=jsonb_set>jsonb_set</h3><div class=body>
+<pre class=language-sql><code class=language-sql><span class="token keyword">UPDATE</span> users <span class="token keyword">SET</span> <span class="token keyword">data</span> <span class="token operator">=</span> jsonb_set<span class="token punctuation">(</span><span class="token keyword">data</span><span class="token punctuation">,</span> <span class="token string">'{name}'</span><span class="token punctuation">,</span> <span class="token string">'"John"'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Only available in PostgreSQL 9.5+.</p>
+</div></div></div></div><div class=h2-section><h2 id=functions><a href=#functions class="local-anchor anchor">#</a>Functions</h2><div class="body h3-section-list" data-js-h3-section-list style=position:relative;height:426px>
+<div class=h3-section style=position:absolute;left:0;top:0><div class=body><h4 id=fnjson--json>fn(json) → json</h4>
+<pre class=language-sql><code class=language-sql>jsonb_set<span class="token punctuation">(</span><span class="token keyword">data</span><span class="token punctuation">,</span> <span class="token string">'{path}'</span><span class="token punctuation">,</span> <span class="token keyword">value</span><span class="token punctuation">)</span>
+jsonb_strip_nulls<span class="token punctuation">(</span><span class="token keyword">data</span><span class="token punctuation">)</span>
+</code></pre>
+<h4 id=fn--json>fn(···) → json</h4>
+<pre class=language-sql><code class=language-sql>to_json<span class="token punctuation">(</span><span class="token string">"Hello"</span>::<span class="token keyword">text</span><span class="token punctuation">)</span>
+array_to_json<span class="token punctuation">(</span><span class="token string">'{1,2}'</span>::<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<h4 id=iteration>Iteration</h4>
+<pre class=language-sql><code class=language-sql><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">from</span> json_each<span class="token punctuation">(</span><span class="token string">'{"a":1, "b":2}'</span><span class="token punctuation">)</span>
+<span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">from</span> json_each_text<span class="token punctuation">(</span><span class="token string">'{"a":1, "b":2}'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck=true>-- key | value</span>
+</code></pre>
+<p>This is an incomplete list, there’s way too many!</p>
+<p>See: <a href=https://www.postgresql.org/docs/9.5/static/functions-json.html>JSON functions</a></p>
+</div></div></div></div><div class=h2-section><h2 id=more-examples><a href=#more-examples class="local-anchor anchor">#</a>More examples</h2><div class="body h3-section-list" data-js-h3-section-list style=position:relative;height:95px>
+<div class=h3-section style=position:absolute;left:0;top:0><div class=body><ul>
+<li><code>'{"a":1}'::jsonb ? 'a'</code></li>
+<li><code>'["a"]'::jsonb ? 'a'</code></li>
+</ul>
+</div></div></div></div><div class=h2-section><h2 id=references><a href=#references class="local-anchor anchor">#</a>References</h2><div class="body h3-section-list" data-js-h3-section-list style=position:relative;height:93px>
+<div class=h3-section style=position:absolute;left:0;top:0><div class=body><ul>
+<li><a href=https://www.postgresql.org/docs/9.5/static/functions-json.html>https://www.postgresql.org/docs/9.5/static/functions-json.html</a></li>
+<li><a href=https://www.postgresql.org/docs/9.5/static/datatype-json.html>https://www.postgresql.org/docs/9.5/static/datatype-json.html</a></li>
+</ul>
+</div></div></div></div></main>
+</div>
